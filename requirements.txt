@@ -1,12 +1,15 @@
 Flask==0.10.1
 Flask-RESTful==0.2.12
+Flask-SQLAlchemy==1.0
 Jinja2==2.7.2
 MarkupSafe==0.21
+SQLAlchemy==0.9.4
 Werkzeug==0.9.4
 aniso8601==0.82
 argparse==1.2.1
 gunicorn==18.0
 itsdangerous==0.24
+psycopg2==2.5.2
 pytz==2014.2
 six==1.6.1
 wsgiref==0.1.2
