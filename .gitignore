@@ -1,2 +1,4 @@
 venv
 *.pyc
+src/food_trucks.json
+src/parser.py
