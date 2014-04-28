@@ -1,7 +1,7 @@
 import math
 from sqlalchemy.ext.hybrid import hybrid_property, hybrid_method
 from sqlalchemy import func
-from api import db
+from server import db
 
 class FoodTruck(db.Model):
     id = db.Column(db.Integer, primary_key=True)
