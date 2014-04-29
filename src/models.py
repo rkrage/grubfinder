@@ -1,7 +1,9 @@
 import math
+from flask.ext.sqlalchemy import SQLAlchemy
 from sqlalchemy.ext.hybrid import hybrid_property, hybrid_method
 from sqlalchemy import func
-from server import db
+
+db = SQLAlchemy()
 
 class FoodTruck(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -26,7 +28,8 @@ class FoodTruck(db.Model):
     def as_dict(self):
       return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
-    # distance calculations adapted from http://www.movable-type.co.uk/scripts/latlong.html
+    # calculate distance (in km) between food truck and geolocation
+    # adapted from http://www.movable-type.co.uk/scripts/latlong.html
     @hybrid_method
     def distance(self, latitude, longitude):
         earth_radius = 6371
@@ -38,6 +41,7 @@ class FoodTruck(db.Model):
         c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
         return earth_radius * c
 
+    # converted distance function for use in SQL query
     @distance.expression
     def distance(cls, latitude, longitude):
         earth_radius = 6371
