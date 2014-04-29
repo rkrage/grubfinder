@@ -1,11 +1,11 @@
-from server import *
+import server
 import unittest
 import json
 
 class ServerTestCase(unittest.TestCase):
 
     def setUp(self):
-        self.app = app.test_client()
+        self.app = server.app.test_client()
 
     # load index
     def test_html_index(self):
