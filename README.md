@@ -19,7 +19,7 @@ Currently, the frontend has very limited functionality (only displays food truck
 
 The backend API is complete but very minimal. Two REST endpoints are defined:
 
-GET /api/foodtrucks/<int:id>
+GET /api/foodtrucks/\<int:id\>
 - id: food truck id in database
 - returns a single food truck
 
@@ -39,4 +39,4 @@ Paginate API data - Currently, the /api/foodtrucks endpoint returns the entire l
 
 Dynamic food truck database - Currently, the database contains static food truck information. Obviously food trucks will constantly be moving and the database should reflect that. In a perfect scenario, food trucks would register with the app and their location would be updated by posting to the API. If this cannot be accomplished, a daemon process would monitor the sfgov.org database and modify the local database with changes.
 
-Web Testing - Use Selenium to test frontend web interface
+Web Testing - Use Selenium to test frontend web interface.
