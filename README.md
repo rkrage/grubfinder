@@ -40,3 +40,5 @@ Paginate API data - Currently, the /api/foodtrucks endpoint returns the entire l
 Dynamic food truck database - Currently, the database contains static food truck information. Obviously food trucks will constantly be moving and the database should reflect that. In a perfect scenario, food trucks would register with the app and their location would be updated by posting to the API. If this cannot be accomplished, a daemon process would monitor the sfgov.org database and modify the local database with changes.
 
 Web Testing - Use Selenium to test frontend web interface.
+
+Security - Implement SSL and API authorization keys
