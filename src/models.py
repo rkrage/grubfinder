@@ -37,9 +37,8 @@ class FoodTruck(db.Model):
         dlon = math.radians(longitude - self.longitude)
         lat1 = math.radians(self.latitude)
         lat2 = math.radians(latitude)
-        a = math.sin(dlat/2) * math.sin(dlat/2) + math.sin(dlon/2) * math.sin(dlon/2) * math.cos(lat1) * math.cos(lat2)
-        c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
-        return earth_radius * c
+        haversine = math.sin(dlat/2) * math.sin(dlat/2) + math.sin(dlon/2) * math.sin(dlon/2) * math.cos(lat1) * math.cos(lat2)
+        return earth_radius * 2 * math.atan2(math.sqrt(haversine), math.sqrt(1-haversine))
 
     # converted distance function for use in SQL query
     @distance.expression
@@ -50,6 +49,5 @@ class FoodTruck(db.Model):
         dlon = (longitude - cls.longitude) * pi_converter
         lat1 = (cls.latitude) * pi_converter
         lat2 = (latitude) * pi_converter
-        a = func.sin(dlat/2) * func.sin(dlat/2) + func.sin(dlon/2) * func.sin(dlon/2) * func.cos(lat1) * func.cos(lat2)
-        c = 2 * func.atan2(func.sqrt(a), func.sqrt(1-a))
-        return earth_radius * c
+        haversine = func.sin(dlat/2) * func.sin(dlat/2) + func.sin(dlon/2) * func.sin(dlon/2) * func.cos(lat1) * func.cos(lat2)
+        return earth_radius * 2 * func.atan2(func.sqrt(haversine), func.sqrt(1-haversine))
